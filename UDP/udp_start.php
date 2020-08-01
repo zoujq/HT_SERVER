@@ -1,6 +1,6 @@
 <?php
 use Workerman\Worker;
-require_once __DIR__ .'../Workerman-master/Autoloader.php';
+require_once __DIR__ .'/../Workerman-master/Autoloader.php';
 
 
 $udp_worker = new Worker('udp://0.0.0.0:5000');
