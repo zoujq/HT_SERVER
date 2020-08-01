@@ -12,7 +12,11 @@
 
 </head>
 <body>
-欢迎访问火天方案服务器
+  <div style="position:absolute;left:10px;top:10px;font-family: 微软雅黑;color:#fff;z-index: 2;">
+    <span style="font-size: larger;">火天IOT服务器</span>
+    <span style="font-size: small;"><a style="color:#fff;" href="http://www.huotiantech.com">访问官网</a></span>
+
+  </div>
 
   <script src="./canvas/lvrjwz.js"></script>
   <script src="./canvas/simplex-noise.min.js"></script> 
