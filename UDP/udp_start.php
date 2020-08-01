@@ -8,7 +8,16 @@ $udp_worker = new Worker('udp://0.0.0.0:5000');
 $udp_worker->onMessage = function($connection, $data)
 {
     var_dump($data);
-    $connection->send('receive success');
+    if($data=='["ping"]')
+    {
+    	$connection->send('["pong"]');
+    }
+    else
+    {
+    	$connection->send('["ok"]');
+
+    }
+    
 };
 // 运行worker
 Worker::runAll();
