@@ -7,7 +7,7 @@ $udp_worker = new Worker('udp://0.0.0.0:5000');
 
 $udp_worker->onMessage = function($connection, $data)
 {
-    var_dump($data);
+    //var_dump($data);
     if($data=='["ping"]')
     {
     	$connection->send('["pong"]');
