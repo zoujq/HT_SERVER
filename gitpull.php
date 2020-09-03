@@ -1,5 +1,5 @@
 <?php
-	$shell = "ls -la";
+	$shell = "git pull";
 	echo "<pre>";
 	system($shell, $status);
 	echo "</pre>";
