@@ -1,3 +1,329 @@
-<script  type="text/javascript" charset="utf-8" >	
-	window.location.replace("../index.html#/pages/connect/connect");
-</script>
+<html>
+<head>
+	<title>FUGUANG-MUG</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+	<style>
+		body{
+			background-color: #F7F7F7;
+		}
+		@media (prefers-color-scheme: dark) {
+			body{
+				background-color: #000000;
+			}
+		}
+		.content{
+			display: flex;
+			flex-direction: column;
+			align-items: center;	
+			height:100%;
+			width: 100vw;
+			overflow-x: scroll;
+		}
+		
+		.connecting{
+			margin-top: 11.11vw;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.connecting-no-show{
+			display: none;
+		}
+		.connecting .jin-du{
+			height: 14.03vw;
+			/* width: 500rpx; */
+			display: flex;
+			justify-content: center;
+		}
+		.num{
+			height: 14.03vw;
+			/* width: 89.58rpx; */
+			font-size: 10.55vw;
+			color: #191919;
+			line-height: 14.02vw;
+			text-align: right;
+			
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.num{
+				opacity: 0.86;
+				color: #FFFFFF;
+			}
+		}
+		.bai-fen{
+			width: 4.1vw;
+			height: 7.43vw;
+			color: #191919;
+			margin-top: 6.04vw;
+			margin-left:0.56vw;
+			font-size: 5.55vw;
+			
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.bai-fen{
+				opacity: 0.86;
+				color: #FFFFFF;
+			}
+		}
+		.connecting .bang-ding-ing{
+			height:5.42vw;
+			width:91.11vw;
+			font-size: 3.89vw;
+			text-align: center;
+			margin-top: 2.15vw;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.bang-ding-ing{
+				color: #FFFFFF;
+			}
+		}
+		.fail-tip{	
+			margin-top: 11.11vw;
+			display: none;
+			flex-direction: column;
+			align-items: center;
+		}
+		.fail-tip-show{
+			display: flex;
+		}
+		.idimg{
+			height: 70vw;
+			width:  70vw;	
+			margin-top: 3.82vw;
+		}
+		.icon-error{
+			height: 12.8vw;
+			width: 12.8vw;
+		}
+		.lian-jie-shi-bai{
+			margin-top: 2.77vw;
+			height: 7.43vw;
+			width:91.11vw;
+			line-height: 7.34vw;
+			text-align: center;
+			font-size: 5.55vw;
+		}
+		@media (prefers-color-scheme: dark) {
+			.lian-jie-shi-bai{
+				color: #FFFFFF;
+			}
+		}
+		.tip-title{
+			height: 5.97vw;
+			width: 91.11vw;
+			text-align: left;
+			font-size: 4.44vw;
+			margin-top: 6.67vw;
+			margin-left: 6.67vw;
+			margin-bottom: 1.18vw;
+		}	
+		@media (prefers-color-scheme: dark) {
+			.tip-title{
+				color: #FFFFFF;
+			}
+		}
+		.tip-content{
+			height: 5.97vw;
+			width: 91.11vw;
+			text-align: left;
+			font-size: 4.44vw;
+			margin-top: 1.11vw;
+			margin-left: 6.67vw;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.tip-content{
+				color: #FFFFFF;
+			}
+		}
+		.footer{
+			margin-top: 28.4vw;
+			height: 10vw;
+			width: 50vw;
+			border-radius: 5vw;
+			background: rgba(0,0,0,0.05);
+			line-height: 10vw;
+			text-align: center;
+			color: #007DFF;
+			font-size: 4.44vw;
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			.footer{
+				background: rgba(255,255,255,0.10);
+			}
+		}
+		
+	</style>
+	<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+	<script>
+		eruda.init()
+	</script>
+</head>	
+<body>
+	<div class="content" >
+		<image class="idimg"  src="./xxhdpi/idimg.png"></image>
+		<div id='connecting' class="connecting" >
+			<div class="jin-du">
+				<div id='num' class="num" >0</div>
+				<div class="bai-fen" >%</div>
+			</div>
+			<div class="bang-ding-ing" >设备绑定中...</div>
+		</div>
+		<div id='fail-tip' class="fail-tip" >
+			<image class="icon-error" src="./xxhdpi/ic_tips_filled.png"></image>
+			<div class="lian-jie-shi-bai" >连接失败</div>
+			<div class="tip-title" >连接过程中,请确保:</div>
+			<div class="tip-content" >1.手机蓝牙是否打开</div>
+			<div class="tip-content" >2.设备与手机的距离小于5米</div>
+			<div class="tip-content" >3.手机网络通畅</div>
+			<div class="tip-content" >4.该设备未被当前账号注册</div>
+			<div class="footer" onclick="start_regist()">重新注册</div>
+			
+		</div>
+	</div>
+	<script>
+		
+		var bang_ding_state=0;
+		var os='';
+		/*********************************get os***********************************/  
+		function get_os()
+		{
+			var os = navigator.userAgent;
+			if(os.indexOf('Android') > -1 || os.indexOf('Adr') > -1)
+			{
+				os='android';
+			}
+			else{
+				os='ios';
+			}
+			return os;
+		}
+		/*********************************regist***********************************/                                     
+		function start_regist()
+		{	
+			bang_ding_state=0;
+			start_counter();
+			console.log('get_adapter');
+			// window.hilink.getBluetoothAdapterState('window.get_adapter_cb');
+			window.hilink.getCurrentUnregisteredDevice('window.get_dev_cb');
+		}
+		window.get_adapter_cb = (res)=>{
+			if(JSON.parse(res).available==true)
+			{
+				console.log('adapter is ture');
+				window.hilink.getCurrentUnregisteredDevice('window.get_dev_cb');
+			}
+			else{
+				bang_ding_state=-1;
+				window.hilink.openBluetoothAdapter('window.open_adapter_cb');
+				window.hilink.onBluetoothAdapterStateChange('window.adapter_change_cb');
+			}
+		 
+		}
+		window.open_adapter_cb = (res)=>{
+			console.log(res)
+		}
+		window.window.adapter_change_cb = (res)=>{
+			console.log(res)
+		}
+		window.get_dev_cb = (res)=>{
+			console.log(res);
+			let json_obj=JSON.parse(res)
+			
+			if(json_obj.errCode==0)
+			{		
+				if(get_os()=='android')
+				{
+					window.hilink.registerBleDevice(json_obj.advertisData.substring(22,34),
+					'V1.0.1', 'V1.0.1', 'window.regist_cb');
+					console.log('android registerBleDevice:'+json_obj.advertisData.substring(22,34));
+				}
+				else
+				{
+					window.hilink.registerBleDevice(json_obj.advertisData.replace(/ /,'').replace(/</,'').replace(/>/,''),
+					'V1.0.1', 'V1.0.1', 'window.regist_cb');
+					console.log('ios registerBleDevice:'+json_obj.advertisData.replace(/ /,'').replace(/</,'').replace(/>/,''));
+				}
+			}	
+			else
+			{
+				bang_ding_state=-1;
+			}
+			
+		 }
+		 window.regist_cb = (res)=>{
+			 console.log(res);
+			 if(res==0)
+			 {
+				 bang_ding_state=1;
+			 }
+			 else{
+				 bang_ding_state=-1;
+			 }
+			 //bang_ding_state
+		}
+		function get_bangding_state(){
+			return bang_ding_state;
+		}
+		function internationalizes(){
+			this.currentLanguage = (function getAppLanguage() {
+		          // 判定规则:如果不是以'zh-'开始则显示为en-US
+		          let language,
+		            defualtLanguage = 'zh-CN';
+		          // let language = window.hilink.getAppLanguage();
+		          let reg = /^zh-/i;
+		          if (navigator && navigator.language) {
+		            language = reg.test(navigator.language) ? defualtLanguage : 'en-US';
+		          } else {
+		            language = defualtLanguage;
+		          }
+		          return language;
+		        })();
+		        
+		        if(this.currentLanguage !== 'zh-CN') {
+		        	this.document.getElementsByClassName("bang-ding-ing")[0].innerHTML = 'Connecting…'
+		        	this.document.getElementsByClassName("lian-jie-shi-bai")[0].innerHTML = 'Unable to connect'
+		        	this.document.getElementsByClassName("tip-title")[0].innerHTML = 'While connecting, make sure:'
+		        	this.document.getElementsByClassName("tip-content")[0].innerHTML = '1.The phone\'s Bluetooth is enabled.'
+		        	this.document.getElementsByClassName("tip-content")[1].innerHTML = '2.The device is within 5 meters of the phone.'
+		        	this.document.getElementsByClassName("tip-content")[2].innerHTML = '3.The phone is connected to the Internet.'
+		        	this.document.getElementsByClassName("tip-content")[3].innerHTML = '4.The device is not paired with the current account before.'
+		        	this.document.getElementsByClassName("footer")[0].innerHTML = 'Try again'
+		        } 
+		}
+		window.onload = function() {
+			
+			internationalizes();
+			start_regist();
+			//注册30s以上，提示连接超时
+			
+		}
+		function start_counter()
+		{
+			this.document.getElementById("fail-tip").style.cssText = "display:none";
+			this.document.getElementById("connecting").style.cssText = "display:flex";
+			this.document.getElementById("num").innerHTML = 0;
+			setTimeout(() => {
+				this.document.getElementById("fail-tip").style.cssText = "display:flex";
+				this.document.getElementById("connecting").style.cssText = "display:none";
+			}, 30 * 1000);
+			
+			let i = 1;
+			let timer = setInterval(() => {
+				if(i>=100){
+					clearInterval(timer);
+					return
+				}
+				console.log(i)
+				this.document.getElementById("num").innerHTML = i;
+				i++;
+			}, 300);
+		}
+	</script>
+</body>
+</html>
