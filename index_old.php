@@ -18,8 +18,17 @@
 
   </div>
 
-  <script src="./canvas/p5.min.js"></script>
-  <script src="./canvas/script.js"></script>
+  <script src="./canvas/lvrjwz.js"></script>
+  <script src="./canvas/simplex-noise.min.js"></script> 
+
+  <script src="./canvas/index.js"></script>
+
+
+
+<canvas width="100%" height="100%" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%;">
+  
+
+</canvas>
   
 </body>
 </html>
