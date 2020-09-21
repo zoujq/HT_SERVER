@@ -46,9 +46,9 @@
 
      // $sql = "INSERT INTO `serversql`.`user_info_tb` (`u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES ('mm','mm',0,'mm','dd','ff','dd')";
 
-    $result =$conn->query($sql);
+    //$result =$conn->query($sql);
 
-    var_dump($result);
+    var_dump($sql);
     // if ($result->num_rows > 0) 
     // {
     //     // 输出数据
