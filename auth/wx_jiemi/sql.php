@@ -40,8 +40,8 @@
     if ($conn->connect_error) {
         die("连接失败: " . $conn->connect_error);
     } 
-    $sql = "INSERT INTO `serversql`.`user_info_tb` (
-     `u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES ( $p_arr['nickName'], $p_arr['avatarUrl'], $p_arr['gender'],$p_arr['language'], $p_arr['city'], $p_arr['province'], $p_arr['country'])";
+
+    $sql = "INSERT INTO `serversql`.`user_info_tb` (`u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES ( $p_arr['nickName'], $p_arr['avatarUrl'], $p_arr['gender'],$p_arr['language'], $p_arr['city'], $p_arr['province'], $p_arr['country'])";
 
 
     $result =$conn->query($sql);
