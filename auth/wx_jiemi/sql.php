@@ -5,7 +5,7 @@
   $dbname = "serversql";
 
  
-  function regist($P_id,$P_title)
+  function check_exist($unionId)
   {
     // 创建连接
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
@@ -15,7 +15,7 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM `P_detial_table` WHERE `P_id` =$P_id";
+    $sql = "SELECT * FROM `user_auth_tb` WHERE `a_data2` =$unionId";
 
     $result =$conn->query($sql);
 
@@ -24,14 +24,38 @@
         // 输出数据
         while($row = $result->fetch_assoc()) 
         {
-            return array("P_title"=>$row["P_title"],"P_gaiyao"=>$row["P_gaiyao"],"P_xiangqing"=>$row["P_xiangqing"],
-              "P_canshu"=>$row["P_canshu"],"P_fanwei"=>$row["P_fanwei"]) ;
+            return $row["htu_id"] ;
         }
     } 
 
     return 0;
   }
 
+  function regist($p_arr)
+  {
+    // 创建连接
+    $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
+     
+    // 检测连接
+    if ($conn->connect_error) {
+        die("连接失败: " . $conn->connect_error);
+    } 
+    $sql = "INSERT INTO `serversql`.`user_info_tb` (
+     `u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES ( $p_arr['nickName'], $p_arr['avatarUrl'], $p_arr['gender'],$p_arr['language'], $p_arr['city'], $p_arr['province'], $p_arr['country'])";
+
+
+    $result =$conn->query($sql);
+
+    var_dump($result);
+    // if ($result->num_rows > 0) 
+    // {
+    //     // 输出数据
+    //     while($row = $result->fetch_assoc()) 
+    //     {
+    //         return $row["htu_id"] ;
+    //     }
+    // } 
+  }
 
 
 ?>
