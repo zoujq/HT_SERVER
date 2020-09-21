@@ -1,6 +1,6 @@
 <?php
 
-require_once './sql.php';
+//require_once './sql.php';
 
 echo "string";
 
