@@ -1,6 +1,6 @@
 <?php
 
-require_once './sql.php';
+//require_once './sql.php';
 echo 'test-ok';
 
 // $p_arr=array();
@@ -13,3 +13,4 @@ echo 'test-ok';
 
 // regist($p_arr);
 
+?>
