@@ -12,6 +12,6 @@ $p_arr['city']='013';
 $p_arr['province']='014';
 $p_arr['country']='015';
 
- regist($p_arr);
+ regist($p_arr['country']);
 
 ?>

@@ -48,7 +48,7 @@
 
     //$result =$conn->query($sql);
 
-    var_dump("$p_arr['province']");
+    var_dump("$p_arr");
     // if ($result->num_rows > 0) 
     // {
     //     // 输出数据
