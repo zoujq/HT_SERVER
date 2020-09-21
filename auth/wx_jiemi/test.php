@@ -1,7 +1,7 @@
 <?php
 
 //require_once './sql.php';
-echo 'test-ok';
+var_dump("123");
 
 // $p_arr=array();
 // $p_arr['avatarUrl']='01';
