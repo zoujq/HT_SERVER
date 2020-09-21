@@ -12,8 +12,8 @@ $p_arr['language']='012';
 $p_arr['city']='013';
 $p_arr['province']='014';
 $p_arr['country']='015';
-$p_arr['openId']='015';
-$p_arr['unionId']='015';
+$p_arr['openId']='016';
+$p_arr['unionId']='017';
 
 var_dump(regist_user($p_arr)) ;
 
