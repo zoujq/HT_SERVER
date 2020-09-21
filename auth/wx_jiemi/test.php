@@ -2,6 +2,7 @@
 
 //require_once './sql.php';
 var_dump("123");
+echo "string";
 
 // $p_arr=array();
 // $p_arr['avatarUrl']='01';
