@@ -16,12 +16,9 @@ $errCode = $pc->decryptData($encryptedData, $iv, $data );
 
 if ($errCode == 0) {
     //var_dump($data);
-    $p_arr=json_decode($data,true);	
-
-	if(check_exist($p_arr['unionId'])==0)
-	{
-		
-	}
+    $p_arr=json_decode($data,true);
+	
+    echo regist_user($p_arr);
 
 } else {
     var_dump($errCode);
