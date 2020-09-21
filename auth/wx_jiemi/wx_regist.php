@@ -1,7 +1,7 @@
 <?php
 
 include_once "wxBizDataCrypt.php";
-
+require_once './sql.php';
 
 $appid = 'wxb0eded63df8e4326';
 $sessionKey= $_GET["sessionKey"];
