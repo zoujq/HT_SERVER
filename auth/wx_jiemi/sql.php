@@ -57,7 +57,7 @@
 
   function insert_user_info($conn,$nickName,$avatarUrl, $gender,$language, $city,$province,$country)
   {
-    $sql = "INSERT INTO `serversql`.`user_info_tb` (`u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES (\'$nickName\',\'$avatarUrl\',\'$gender\',\'$language\', \'$city\',\'$province\',\'$country\' )";
+    $sql = "INSERT INTO `serversql`.`user_info_tb` (`u_name`, `u_img`, `u_gender`, `u_language`, `u_city`, `u_province`, `u_country`) VALUES ('".$nickName."','".$avatarUrl."','".$gender."','".$language."', '".$city."','".$province."','".$country."' )";
     $result =$conn->query($sql);
     echo $sql;
     $sql = "SELECT `htu_id` FROM `user_info_tb` ORDER BY `htu_id` DESC LIMIT 0,1";
