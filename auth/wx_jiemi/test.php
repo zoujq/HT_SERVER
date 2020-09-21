@@ -2,7 +2,7 @@
 
 require_once './sql.php';
 
-echo "string";
+echo "string1";
 
 $p_arr=array();
 $p_arr['avatarUrl']='01';
