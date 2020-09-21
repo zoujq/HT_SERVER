@@ -2,7 +2,7 @@
 
 require_once './sql.php';
 
-echo "string1";
+echo "string2";
 
 $p_arr=array();
 $p_arr['nickName']='nickName';
@@ -15,6 +15,6 @@ $p_arr['country']='015';
 $p_arr['openId']='015';
 $p_arr['unionId']='015';
 
- regist($p_arr['country']);
+var_dump(regist_user($p_arr)) ;
 
 ?>
