@@ -24,24 +24,17 @@
         {
           if($row["a_data1"] !=$ht_token)
           {
-            
+            return 0;
           }      
         }
     } 
-    if($htu_id !=0)
-    {
-      $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id AND `a_type`= 'ht_token'" ;
-      $result =$conn->query($sql);
-      if ($result->num_rows > 0) 
-      {
-          // 输出数据
-          while($row = $result->fetch_assoc()) 
-          {
-            $ht_token=$row["a_data1"];          
-          }
-      } 
-    }
-    return array('htu_id'=>$htu_id ,'ht_token'=>$ht_token);
+
+    $sql = "DELETE FROM `device_bind_tb` WHERE `htd_id` = '".$htd_id."'";
+    $result =$conn->query($sql);
+
+    $sql = "INSERT INTO `device_bind_tb`(`htu_id`, `htd_id`) VALUES ('".$htu_id."','".$htd_id."')";
+    $result =$conn->query($sql);
+    return 1;
   }
 
  
