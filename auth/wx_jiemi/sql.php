@@ -75,7 +75,7 @@
   function insert_auth_info($conn,$htu_id,$openId,$unionId)
   {
     $sql = "INSERT INTO `serversql`.`user_auth_tb` ( `htu_id`, `a_type`, `a_data1`, `a_data2`) VALUES ( 
-    $htu_id, 'wx_mini', $openId, $unionId)";
+    $htu_id, 'wx_mini','". $openId."','".$unionId."')";
     $result =$conn->query($sql);
   }
 
