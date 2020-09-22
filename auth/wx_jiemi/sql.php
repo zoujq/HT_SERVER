@@ -42,7 +42,7 @@
 
   function check_exist($conn,$unionId)  
   {
-    $sql = "SELECT * FROM `user_auth_tb` WHERE `a_data2` =$unionId";
+    $sql = "SELECT * FROM `user_auth_tb` WHERE `a_data2` ='".$unionId."'";
 
     $result =$conn->query($sql);
 
