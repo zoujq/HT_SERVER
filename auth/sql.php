@@ -28,19 +28,19 @@
           $htu_id=$row["htu_id"];          
         }
     } 
-    if($htu_id !=0)
-    {
-      $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id";
-      $result =$conn->query($sql);
-      if ($result->num_rows > 0) 
-      {
-          // 输出数据
-          while($row = $result->fetch_assoc()) 
-          {
-            $ht_token=$row["a_data1"];          
-          }
-      } 
-    }
+    // if($htu_id !=0)
+    // {
+    //   $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id";
+    //   $result =$conn->query($sql);
+    //   if ($result->num_rows > 0) 
+    //   {
+    //       // 输出数据
+    //       while($row = $result->fetch_assoc()) 
+    //       {
+    //         $ht_token=$row["a_data1"];          
+    //       }
+    //   } 
+    // }
     return array('htu_id'=>$htu_id,'ht_token'=$ht_token);
   }
 

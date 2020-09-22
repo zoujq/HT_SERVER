@@ -29,15 +29,15 @@
     if($htu_id!=0)
     {
       insert_auth_info($conn,$htu_id,$openId,$unionId);
-      $access_token=get_ht_token($conn,$htu_id);
-      return array("htu_id"=>$htu_id,"access_token"=>$access_token);
+      $ht_token=get_ht_token($conn,$htu_id);
+      return array("htu_id"=>$htu_id,"ht_token"=>$ht_token);
     }
 
     $htu_id=insert_user_info($conn,$nickName,$avatarUrl, $gender,$language, $city,$province,$country);
     insert_auth_info($conn,$htu_id,$openId,$unionId);
-    $access_token=insert_ht_token($conn,$htu_id);
+    $ht_token=insert_ht_token($conn,$htu_id);
 
-    return array("htu_id"=>$htu_id,"access_token"=>$access_token);
+    return array("htu_id"=>$htu_id,"ht_token"=>$ht_token);
   }
 
   function check_exist($conn,$unionId)  
@@ -84,12 +84,12 @@
 
   function insert_ht_token($conn,$htu_id)
   {
-    $access_token=md5(mt_rand().'_');
+    $ht_token=md5(mt_rand().'_');
     $sql = "INSERT INTO `serversql`.`user_auth_tb` ( `htu_id`, `a_type`, `a_data1`) VALUES ( 
-    $htu_id, 'access_token','".$access_token."')";
+    $htu_id, 'ht_token','".$ht_token."')";
     $result =$conn->query($sql);
 
-    return $access_token;
+    return $ht_token;
   }
   function get_ht_token($conn,$htu_id)
   {
