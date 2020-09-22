@@ -28,13 +28,16 @@
     $htu_id=check_exist($conn, $unionId);
     if($htu_id!=0)
     {
-      return $htu_id;
+      insert_auth_info($conn,$htu_id,$openId,$unionId);
+      $access_token=get_ht_token($conn,$htu_id);
+      return array("htu_id"=>$htu_id,"access_token"=>$access_token);
     }
 
     $htu_id=insert_user_info($conn,$nickName,$avatarUrl, $gender,$language, $city,$province,$country);
     insert_auth_info($conn,$htu_id,$openId,$unionId);
+    $access_token=insert_ht_token($conn,$htu_id);
 
-    return $htu_id;
+    return array("htu_id"=>$htu_id,"access_token"=>$access_token);
   }
 
   function check_exist($conn,$unionId)  
@@ -79,6 +82,29 @@
     $result =$conn->query($sql);
   }
 
+  function insert_ht_token($conn,$htu_id)
+  {
+    $access_token=md5(mt_rand().'_');
+    $sql = "INSERT INTO `serversql`.`user_auth_tb` ( `htu_id`, `a_type`, `a_data1`) VALUES ( 
+    $htu_id, 'access_token','".$access_token."')";
+    $result =$conn->query($sql);
+
+    return $access_token;
+  }
+  function get_ht_token($conn,$htu_id)
+  {
+    $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id";
+
+    $result =$conn->query($sql);
+    if ($result->num_rows > 0) 
+    {
+        // 输出数据
+        while($row = $result->fetch_assoc()) 
+        {
+            return $row["a_data1"] ;
+        }
+    } 
+  }
 
 ?>
 
