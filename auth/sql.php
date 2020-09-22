@@ -14,7 +14,7 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM `user_auth_tb` WHERE `a_data1` = $openId";
+    $sql = "SELECT * FROM `user_auth_tb` WHERE `a_data1` = '".$openId."'";
 
     $result =$conn->query($sql);
 
