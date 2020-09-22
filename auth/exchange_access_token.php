@@ -9,5 +9,6 @@ $ret=get_htu_id($j_arr['openid']);
 $j_arr['htu_id']=$ret['htu_id'];
 $j_arr['ht_token']=$ret['ht_token'];
 
+echo "string";
 echo json_encode($j_arr);
 ?>
