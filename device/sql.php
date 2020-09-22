@@ -6,6 +6,7 @@
  
   function bind_device($htu_id,$ht_token,$htd_id)
   {
+    $auth=0;
     // 创建连接
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
@@ -22,19 +23,23 @@
         // 输出数据
         while($row = $result->fetch_assoc()) 
         {
-          if($row["a_data1"] !=$ht_token)
+          if($row["a_data1"] ==$ht_token)
           {
-            return 0;
+            $auth=1;
           }      
         }
     } 
+    if($auth==1)
+    {
+      $sql = "DELETE FROM `device_bind_tb` WHERE `htd_id` = '".$htd_id."'";
+      $result =$conn->query($sql);
 
-    $sql = "DELETE FROM `device_bind_tb` WHERE `htd_id` = '".$htd_id."'";
-    $result =$conn->query($sql);
-
-    $sql = "INSERT INTO `device_bind_tb`(`htu_id`, `htd_id`) VALUES ('".$htu_id."','".$htd_id."')";
-    $result =$conn->query($sql);
-    return 1;
+      $sql = "INSERT INTO `device_bind_tb`(`htu_id`, `htd_id`) VALUES ('".$htu_id."','".$htd_id."')";
+      $result =$conn->query($sql);
+      return array('errCode'=>0,'errMsg'=>'bind ok!');
+    }
+   
+    return array('errCode'=>-1,'errMsg'=>'auth failed!');
   }
 
  
