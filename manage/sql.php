@@ -51,7 +51,7 @@
 
     }
 
-    echo $ret1;
+    //echo $ret1;
     return array('errCode'=>0,'errMsg'=>'bind ok!');
    
   
