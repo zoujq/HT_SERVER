@@ -21,7 +21,22 @@
     $time_stamp=time();
     echo $time_stamp;
 
-    echo dechex($time_stamp);
+    $c1= dechex($time_stamp);
+    if($nums>65535)
+    {
+      $nums=65535;
+    }
+
+    $ret1='';
+    for($i=0;$i<$nums;$i++)
+    {
+      $c2=dechex($i);
+      $c2=strlen($c2)==4 ? $c2: strlen($c2)==3 ? '0'.$c2 : strlen($c2)==2 ? '00'.$c2 : strlen($c2)==1 ? '000'.$c2:'';
+
+      echo $c1.$c2.'<br />';
+
+    }
+
 
     return array('errCode'=>0,'errMsg'=>'bind ok!');
    
