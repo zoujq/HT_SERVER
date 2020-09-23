@@ -15,9 +15,7 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
-    // $sql = "INSERT INTO `serversql`.`device_info_tb` ( `htd_id`, `d_p_id`, `d_secretkey`) VALUES 
-    //         ( '21', '232', '4344')";
-    // $result =$conn->query($sql);
+   
     $time_stamp=time();
     //echo $time_stamp;
 
@@ -52,14 +50,18 @@
       }
       
       $htd_id= $c1 . $c3 . $c2 . '<br />';
-      $d_secretkey=strtolower(base64_encode(mt_rand(10000,99999)));
+      $d_secretkey=strtolower(base64_encode(mt_rand(100001,999999)));
 
       $ret .= "('".$htd_id."','".$d_p_id."','".$d_secretkey."'),";
 
     }
 
-    echo chop($ret,',');
-    return array('errCode'=>0,'errMsg'=>'bind ok!');
+    $ret= chop($ret,',');
+
+    $sql = "INSERT INTO `serversql`.`device_info_tb` ( `htd_id`, `d_p_id`, `d_secretkey`) VALUES $ret";
+    $result =$conn->query($sql);
+
+    return array('errCode'=>0,'errMsg'=>'create success','start'=>$c1.'0000');
    
   
   }
