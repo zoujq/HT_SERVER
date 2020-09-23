@@ -32,6 +32,7 @@
     $c2='';
     for($i=0;$i<$nums;$i++)
     {
+      echo '12<br />';
       $c2=dechex($i);
 
       if(stlen($c2)==1)
