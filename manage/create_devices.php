@@ -32,7 +32,7 @@ $nums=$_GET["nums"];
       //   $c3='0';
       // }
       
-      echo $c1 . $c3 . $c2 . PHP_EOL;
+      echo '_' . $c1 . $c3 . $c2 . PHP_EOL;
 
     }
     echo $ret1;
