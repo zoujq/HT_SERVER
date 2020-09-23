@@ -46,6 +46,8 @@
       else if(stlen($c2)==4)
       {
       }
+
+      
       echo $c1.$c2.'<br />';
 
     }
