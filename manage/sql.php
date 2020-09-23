@@ -31,8 +31,21 @@
     for($i=0;$i<$nums;$i++)
     {
       $c2=dechex($i);
-      // $c2=strlen($c2)==4 ? $c2: strlen($c2)==3 ? '0'.$c2 : strlen($c2)==2 ? '00'.$c2 : strlen($c2)==1 ? '000'.$c2:'';
-      echo strlen($c2).'<br />';
+      if(stlen($c2)==1)
+      {
+        $c2='000'.$c2;
+      }
+      else if(stlen($c2)==2)
+      {
+        $c2='00'.$c2;
+      }
+      else if(stlen($c2)==3)
+      {
+        $c2='0'.$c2;
+      }
+      else if(stlen($c2)==4)
+      {
+      }
       echo $c1.$c2.'<br />';
 
     }
