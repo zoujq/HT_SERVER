@@ -26,7 +26,9 @@
     {
       $nums=65535;
     }
-
+    $d_secretkey='';
+    $htd_id='';
+    $c3='';
     for($i=0;$i<$nums;$i++)
     {
       $c2=dechex($i);
@@ -42,6 +44,10 @@
       else if($len==3)
       {
         $c3='0';
+      }
+      else
+      {
+        $c3='';
       }
       
       echo $c1 . $c3 . $c2 . '<br />';
