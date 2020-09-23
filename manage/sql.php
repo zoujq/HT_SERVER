@@ -34,25 +34,21 @@
     {
       echo '12<br />';
       $c2=dechex($i);
-
-      if(stlen($c2)==1)
+      $len=stlen($c2);
+      if($len==1)
       {
-        $c3='000'.$c2;
+        $c3='000';
       }
-      else if(stlen($c2)==2)
+      else if($len==2)
       {
-        $c3='00'.$c2;
+        $c3='00';
       }
-      else if(stlen($c2)==3)
+      else if($len==3)
       {
-        $c3='0'.$c2;
+        $c3='0';
       }
-      else if(stlen($c2)==4)
-      {
-      }
-
       
-      echo $c1.$c3.'<br />';
+      echo $c1.$c3.$c2.'<br />';
 
     }
 
