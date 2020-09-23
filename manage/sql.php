@@ -19,7 +19,7 @@
     //         ( '21', '232', '4344')";
     // $result =$conn->query($sql);
     $time_stamp=time();
-    echo $time_stamp;
+    //echo $time_stamp;
 
     $c1= dechex($time_stamp);
     if($nums>65535)
