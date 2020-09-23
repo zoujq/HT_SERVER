@@ -52,7 +52,7 @@
       $htd_id= $c1 . $c3 . $c2 . '<br />';
       $d_secretkey=strtolower(base64_encode(mt_rand(100001,999999)));
 
-      $ret .= "('".$htd_id."','".$d_p_id."','".$d_secretkey."'),";
+      $ret .= "('".$htd_id."','".$d_p_id."','".$d_secretkey."'),"
 
     }
 
