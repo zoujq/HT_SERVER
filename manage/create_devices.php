@@ -30,4 +30,6 @@ $nums=$_GET["nums"];
       $ret1=$ret1 . $c1 . $c3 . $c2 . '<br />';
 
     }
+    echo $ret1;
+    echo '123';
 ?>
