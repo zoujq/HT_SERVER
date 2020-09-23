@@ -29,6 +29,7 @@
     $d_secretkey='';
     $htd_id='';
     $c3='';
+    $ret='';
     for($i=0;$i<$nums;$i++)
     {
       $c2=dechex($i);
@@ -50,11 +51,14 @@
         $c3='';
       }
       
-      echo $c1 . $c3 . $c2 . '<br />';
+      $htd_id= $c1 . $c3 . $c2 . '<br />';
+      $d_secretkey=strtolower(base64_encode(mt_rand(10000,99999)));
+
+      $ret .= "('".$htd_id."','".$d_p_id."','".$d_secretkey."'),";
 
     }
 
-    //echo $ret1;
+    echo chop($ret,',');
     return array('errCode'=>0,'errMsg'=>'bind ok!');
    
   
