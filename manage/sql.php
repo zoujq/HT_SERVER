@@ -44,7 +44,7 @@
       }
       else if(stlen($c2)==3)
       {
-        $c3'0'.$c2;
+        $c3='0'.$c2;
       }
       else if(stlen($c2)==4)
       {
