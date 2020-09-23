@@ -18,7 +18,7 @@ $nums=$_GET["nums"];
     for($i;$i<$nums;$i++)
     {
        $c2=dechex($i);
-      // $len=stlen($c2);
+       $len=stlen($c2);
       // if($len==1)
       // {
       //   $c3='000';
