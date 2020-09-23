@@ -17,8 +17,8 @@ $nums=$_GET["nums"];
     $i=0;
     for($i;$i<$nums;$i++)
     {
-      $c2=dechex($i);
-      $len=stlen($c2);
+      // $c2=dechex($i);
+      // $len=stlen($c2);
       // if($len==1)
       // {
       //   $c3='000';
@@ -32,7 +32,7 @@ $nums=$_GET["nums"];
       //   $c3='0';
       // }
       
-       $ret1 .=  $c1 . $c3 . $c2 . PHP_EOL;
+       echo  $c1 . $c3 . $c2 . PHP_EOL;
 
     }
     echo $ret1;
