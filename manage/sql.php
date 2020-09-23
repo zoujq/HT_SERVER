@@ -52,13 +52,13 @@
       $htd_id= $c1 . $c3 . $c2 . '<br />';
       $d_secretkey=strtolower(base64_encode(mt_rand(100001,999999)));
 
-      $ret .= "('".$htd_id."','".$d_p_id."','".$d_secretkey."'),";
+      $ret .= "('".$d_p_id."','".$htd_id."','".$d_secretkey."'),";
 
     }
 
     $ret= chop($ret,',');
 
-    $sql = "INSERT INTO `serversql`.`device_info_tb` ( `htd_id`, `d_p_id`, `d_secretkey`) VALUES $ret";
+    $sql = "INSERT INTO `serversql`.`device_info_tb` (  `d_p_id`, `htd_id`, `d_secretkey`) VALUES $ret";
     $result =$conn->query($sql);
     echo  $sql;
     return array('errCode'=>0,'errMsg'=>'create success','start'=>$c1.'0000');
