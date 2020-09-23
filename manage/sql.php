@@ -31,24 +31,25 @@
     for($i=0;$i<$nums;$i++)
     {
       $c2=dechex($i);
+
       if(stlen($c2)==1)
       {
-        $c2='000'.$c2;
+        $c3='000'.$c2;
       }
       else if(stlen($c2)==2)
       {
-        $c2='00'.$c2;
+        $c3='00'.$c2;
       }
       else if(stlen($c2)==3)
       {
-        $c2='0'.$c2;
+        $c3'0'.$c2;
       }
       else if(stlen($c2)==4)
       {
       }
 
       
-      echo $c1.$c2.'<br />';
+      echo $c1.$c3.'<br />';
 
     }
 
