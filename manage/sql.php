@@ -30,7 +30,7 @@
     $ret1='';
     for($i=0;$i<$nums;$i++)
     {
-      $c2=dechex($i);
+      $c2=dechex($i).'';
       $c2=strlen($c2)==4 ? $c2: strlen($c2)==3 ? '0'.$c2 : strlen($c2)==2 ? '00'.$c2 : strlen($c2)==1 ? '000'.$c2:'';
 
       echo $c1.$c2.'<br />';
