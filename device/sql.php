@@ -156,6 +156,7 @@
         {
           return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
         }
+        return array('errCode'=>0,'errMsg'=>'no data');
       }
     }
     return array('errCode'=>-1,'errMsg'=>'auth failed!');
