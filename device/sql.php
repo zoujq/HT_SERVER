@@ -6,7 +6,6 @@
  
   function bind_device($htu_id,$ht_token,$htd_id)
   {
-    $auth=0;
     // 创建连接
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
@@ -14,22 +13,7 @@
     if ($conn->connect_error) {
         die("连接失败: " . $conn->connect_error);
     } 
-
-    $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = '".$htu_id."' AND `a_type`='ht_token'";
-    $result =$conn->query($sql);
-
-    if ($result->num_rows > 0) 
-    {
-        // 输出数据
-        while($row = $result->fetch_assoc()) 
-        {
-          if($row["a_data1"] ==$ht_token)
-          {
-            $auth=1;
-          }      
-        }
-    } 
-    if($auth==1)
+    if(check_token($conn,$htu_id,$ht_token)==1)
     {
       $sql = "DELETE FROM `device_bind_tb` WHERE `htd_id` = '".$htd_id."'";
       $result =$conn->query($sql);
@@ -43,7 +27,6 @@
   }
   function unbind_device($htu_id,$ht_token,$htd_id)
   {
-    $auth=0;
     // 创建连接
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
@@ -52,21 +35,7 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = '".$htu_id."' AND `a_type`='ht_token'";
-    $result =$conn->query($sql);
-
-    if ($result->num_rows > 0) 
-    {
-        // 输出数据
-        while($row = $result->fetch_assoc()) 
-        {
-          if($row["a_data1"] ==$ht_token)
-          {
-            $auth=1;
-          }      
-        }
-    } 
-    if($auth==1)
+    if(check_token($conn,$htu_id,$ht_token)==1)
     {
       $sql = "DELETE FROM `device_bind_tb` WHERE `htd_id` = '".$htd_id."'";
       $result =$conn->query($sql);
@@ -76,8 +45,9 @@
    
     return array('errCode'=>-1,'errMsg'=>'auth failed!');
   }
- function get_bind_device($htu_id,$ht_token){
-    $auth=0;
+ function get_binded_device($htu_id,$ht_token)
+ {
+    $ret=array();
     // 创建连接
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
@@ -86,6 +56,66 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
+    
+    if(check_token($conn,$htu_id,$ht_token)==1)
+    {
+      $htd_id_arr=get_htd_id_by_htu_id($conn,$htu_id);
+      foreach ($htd_id_arr as $htd_id)
+      {
+          array_push($ret, get_product_by_htd_id($conn,$htd_id)) ;
+      }
+      return array('errCode'=>-1,'errMsg'=>'get device list success','list'=>$ret);
+    }
+   
+    return array('errCode'=>-1,'errMsg'=>'auth failed!');
+ }
+ function get_htd_id_by_htu_id($conn,$htu_id)
+ {
+    $htd_id_arr=array();
+    $sql = "SELECT * FROM `device_bind_tb` WHERE `htu_id` = '".$htu_id."'";
+    $result =$conn->query($sql);
+    $i=0;
+    if ($result->num_rows > 0) 
+    {
+      // 输出数据
+      while($row = $result->fetch_assoc()) 
+      {
+        array_push($htd_id_arr,$row["htd_id"] );             
+      }
+    }
+    return $htd_id_arr;
+ }
+ function get_product_by_htd_id($conn,$htd_id)
+ {
+    $ret=array();
+    $p_id='';
+    $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` = '".$htd_id."'";
+    $result =$conn->query($sql);
+    if ($result->num_rows > 0) 
+    {
+      // 输出数据
+      while($row = $result->fetch_assoc()) 
+      {
+        $p_id=$row["d_p_id"];             
+      }
+    }
+
+    $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
+    $result =$conn->query($sql);
+    if ($result->num_rows > 0) 
+    {
+      // 输出数据
+      while($row = $result->fetch_assoc()) 
+      {
+        array_push($ret,$htd_id,$row["d_p_id"],$row["p_name"],$row["p_icon"]) ;             
+      }
+    }
+
+    return $ret;
+
+ }
+ function check_token($conn,$htu_id,$ht_token)
+ {
     $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = '".$htu_id."' AND `a_type`='ht_token'";
     $result =$conn->query($sql);
 
@@ -96,29 +126,11 @@
         {
           if($row["a_data1"] ==$ht_token)
           {
-            $auth=1;
+            return 1;
           }      
         }
-    } 
-    if($auth==1)
-    {
-      $sql = "SELECT `htd_id` FROM `device_bind_tb` WHERE `htu_id` = '".$htu_id."'";
-      $result =$conn->query($sql);
-
-      if ($result->num_rows > 0) 
-      {
-        // 输出数据
-        while($row = $result->fetch_assoc()) 
-        {
-          if($row["a_data1"] ==$ht_token)
-          {
-            $auth=1;
-          }      
-        }
-      } 
     }
-   
-    return array('errCode'=>-1,'errMsg'=>'auth failed!');
+    return 0; 
  }
 
 ?>
