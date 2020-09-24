@@ -67,7 +67,7 @@
       {
           array_push($ret, get_product_by_htd_id($conn,$htd_id)) ;
       }
-      return array('errCode'=>-1,'errMsg'=>'get device list success','list'=>$ret);
+      return array('errCode'=>0,'errMsg'=>'get device list success','list'=>$ret);
     }
    
     return array('errCode'=>-1,'errMsg'=>'auth failed!');
@@ -134,6 +134,32 @@
         }
     }
     return 0; 
+ }
+ function get_product_info($htu_id,$ht_token,$p_id)
+ {
+    $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
+     
+    // 检测连接
+    if ($conn->connect_error) {
+        die("连接失败: " . $conn->connect_error);
+    } 
+
+    
+    if(check_token($conn,$htu_id,$ht_token)==1)
+    {
+      $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
+      $result =$conn->query($sql);
+      if ($result->num_rows > 0) 
+      {
+        // 输出数据
+        while($row = $result->fetch_assoc()) 
+        {
+          return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
+        }
+      }
+    }
+    return array('errCode'=>-1,'errMsg'=>'auth failed!');
+
  }
 
 ?>
