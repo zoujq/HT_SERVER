@@ -93,7 +93,7 @@
   }
   function get_ht_token($conn,$htu_id)
   {
-    $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id";
+    $sql = "SELECT * FROM `user_auth_tb` WHERE `htu_id` = $htu_id AND `a_type`='ht_token'";
 
     $result =$conn->query($sql);
     if ($result->num_rows > 0) 
