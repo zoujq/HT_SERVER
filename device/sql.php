@@ -150,20 +150,21 @@
     {
       return array('errCode'=>-1,'errMsg'=>'auth failed!');
     }
-
-    $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` ='". $htd_id ."'";
+ 
+    $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` = '".$htd_id."'";
     $result =$conn->query($sql);
-    var_dump($result);
-    var_dump($sql);
-
     if ($result->num_rows > 0) 
     {
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        $find_p_id= $row["htp_id"];             
+        $find_htp_id=$row["htp_id"];             
       }
     }
+    var_dump($result);
+    var_dump($sql);
+    var_dump($find_htp_id);
+
     if($find_htp_id==0){
       return array('errCode'=>-2,'errMsg'=>'device htd_id error!');
     }
