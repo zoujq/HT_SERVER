@@ -154,6 +154,7 @@
     $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` ='". $htd_id ."'";
     $result =$conn->query($sql);
     var_dump($result);
+    var_dump($sql);
 
     if ($result->num_rows > 0) 
     {
