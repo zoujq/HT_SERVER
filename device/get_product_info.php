@@ -9,5 +9,5 @@
 	$htd_id= $_GET["htd_id"];
 
 
-	echo json_encode(get_product_info($htu_id,$ht_token,$p_id,$htd_id));
+	// echo json_encode(get_product_info($htu_id,$ht_token,$p_id,$htd_id));
 ?>
