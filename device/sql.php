@@ -91,7 +91,7 @@
  function get_product_by_htd_id($conn,$htd_id)
  {
     $ret=array();
-    $p_id='';
+    $htp_id='';
     $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` = '".$htd_id."'";
     $result =$conn->query($sql);
     if ($result->num_rows > 0) 
@@ -99,18 +99,18 @@
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        $p_id=$row["d_p_id"];             
+        $htp_id=$row["htp_id"];             
       }
     }
 
-    $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
+    $sql = "SELECT * FROM `product_tb` WHERE `htp_id` = $htp_id";
     $result =$conn->query($sql);
     if ($result->num_rows > 0) 
     {
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        array_push($ret,$htd_id,$row["p_id"],$row["p_name"],$row["p_icon"]) ;             
+        array_push($ret,$htd_id,$row["htp_id"],$row["p_name"],$row["p_icon"]) ;             
       }
     }
 
@@ -135,9 +135,9 @@
     }
     return 0; 
  }
- function get_product_info($htu_id,$ht_token,$p_id,$htd_id)
+ function get_product_info($htu_id,$ht_token,$htp_id,$htd_id)
  {
-    $find_p_id=0;
+    $find_htp_id=0;
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
     // 检测连接
@@ -159,28 +159,28 @@
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        $find_p_id= $row["p_id"];             
+        $find_p_id= $row["htp_id"];             
       }
     }
-    if($find_p_id==0){
+    if($find_htp_id==0){
       return array('errCode'=>-2,'errMsg'=>'device htd_id error!');
     }
-    if($find_p_id != $p_id)
+    if($find_htp_id != $htp_id)
     {
-      return array('errCode'=>-3,'errMsg'=>'device htd_id not match p_id!');
+      return array('errCode'=>-3,'errMsg'=>'device htd_id not match htp_id!');
     }
 
-    $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
+    $sql = "SELECT * FROM `product_tb` WHERE `htp_id` = $htp_id";
     $result =$conn->query($sql);
     if ($result->num_rows > 0) 
     {
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
+        return array('errCode'=>0,'errMsg'=>'','htp_id'=>$row["htp_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
       }
     }
-    return array('errCode'=>-4,'errMsg'=>'p_id error! ');
+    return array('errCode'=>-4,'errMsg'=>'htp_id error! ');
 
  }
 

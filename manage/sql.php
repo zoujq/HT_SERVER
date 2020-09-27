@@ -4,7 +4,7 @@
   $password = "kskdfjdf";
   $dbname = "serversql";
  
-  function create_devices($d_p_id,$nums)
+  function create_devices($htp_id,$nums)
   {
     $auth=0;
     // 创建连接
@@ -52,13 +52,13 @@
       $htd_id= $c1 . $c3 . $c2 . '<br />';
       $d_secretkey=strtolower(base64_encode(mt_rand(100001,999999)));
 
-      $ret .= "('".$d_p_id."','".$htd_id."','".$d_secretkey."'),";
+      $ret .= "('".$htp_id."','".$htd_id."','".$d_secretkey."'),";
 
     }
 
     $ret= chop($ret,',');
 
-    $sql = "INSERT INTO `serversql`.`device_info_tb` (  `d_p_id`, `htd_id`, `d_secretkey`) VALUES $ret";
+    $sql = "INSERT INTO `serversql`.`device_info_tb` (  `htp_id`, `htd_id`, `d_secretkey`) VALUES $ret";
     $result =$conn->query($sql);
     //echo  $sql;
     return array('errCode'=>0,'errMsg'=>'create success','start'=>$c1.'0000');
