@@ -4,8 +4,8 @@
   $password = "kskdfjdf";
   $dbname = "serversql";
  
-  // ini_set("display_errors", "On");//打开错误提示
-  // ini_set("error_reporting",E_ALL);//显示所有错误
+  ini_set("display_errors", "On");//打开错误提示
+  ini_set("error_reporting",E_ALL);//显示所有错误
 
   function bind_device($htu_id,$ht_token,$htd_id)
   {
@@ -138,8 +138,6 @@
  function get_product_info($htu_id,$ht_token,$p_id,$htd_id)
  {
     $find_p_id=0;
-    $errCode=-1;
-    $errMsg=0;
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
     // 检测连接
