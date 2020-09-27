@@ -4,8 +4,8 @@
   $password = "kskdfjdf";
   $dbname = "serversql";
  
-  ini_set("display_errors", "On");//打开错误提示
-  ini_set("error_reporting",E_ALL);//显示所有错误
+  // ini_set("display_errors", "On");//打开错误提示
+  // ini_set("error_reporting",E_ALL);//显示所有错误
 
   function bind_device($htu_id,$ht_token,$htd_id)
   {
@@ -159,7 +159,7 @@
       // 输出数据
       while($row = $result->fetch_assoc()) 
       {
-        $find_p_id= $row["p_id"]) ;             
+        $find_p_id= $row["p_id"];             
       }
     }
     if($find_p_id==0){
