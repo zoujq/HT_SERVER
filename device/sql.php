@@ -161,9 +161,9 @@
         $find_htp_id=$row["htp_id"];             
       }
     }
-    var_dump($result);
-    var_dump($sql);
-    var_dump($find_htp_id);
+    // var_dump($result);
+    // var_dump($sql);
+    // var_dump($find_htp_id);
 
     if($find_htp_id==0){
       return array('errCode'=>-2,'errMsg'=>'device htd_id error!');
