@@ -61,7 +61,7 @@
     $sql = "INSERT INTO `serversql`.`device_info_tb` (  `htp_id`, `htd_id`, `d_secretkey`) VALUES $ret";
     $result =$conn->query($sql);
     //echo  $sql;
-    return array('errCode'=>0,'errMsg'=>'create success','start'=>$c1.'0000');
+    return array('errCode'=>0,'errMsg'=>'create success','start'=>$c1.'0000' ,'end'=>$htd_id);
    
   
   }
