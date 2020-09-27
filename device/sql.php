@@ -135,8 +135,11 @@
     }
     return 0; 
  }
- function get_product_info($htu_id,$ht_token,$p_id)
+ function get_product_info($htu_id,$ht_token,$p_id,$htd_id)
  {
+    $find_p_id=0;
+    $errCode=-1;
+    $errMsg=0;
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
      
     // 检测连接
@@ -145,21 +148,50 @@
     } 
 
     
-    if(check_token($conn,$htu_id,$ht_token)==1)
+    if(check_token($conn,$htu_id,$ht_token)!=1)
     {
-      $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
-      $result =$conn->query($sql);
-      if ($result->num_rows > 0) 
+      $errCode=-1;
+      $errMsg='auth failed!';
+      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+    }
+
+    $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` ='". $htd_id ."'";
+    $result =$conn->query($sql);
+
+    if ($result->num_rows > 0) 
+    {
+      // 输出数据
+      while($row = $result->fetch_assoc()) 
       {
-        // 输出数据
-        while($row = $result->fetch_assoc()) 
-        {
-          return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
-        }
-        return array('errCode'=>0,'errMsg'=>'no data');
+        $find_p_id= $row["p_id"]) ;             
       }
     }
-    return array('errCode'=>-1,'errMsg'=>'auth failed!');
+    if($find_p_id==0){
+      $errCode=-2;
+      $errMsg='device htd_id error!';
+      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+    }
+    if($find_p_id != $p_id)
+    {
+      $errCode=-3;
+      $errMsg='device htd_id not match p_id!';
+      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+    }
+
+    $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
+    $result =$conn->query($sql);
+    if ($result->num_rows > 0) 
+    {
+      // 输出数据
+      while($row = $result->fetch_assoc()) 
+      {
+        return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
+      }
+    }
+    
+    $errCode=-4;
+    $errMsg='p_id error! ';
+    return array('errCode'=>$errCode,'errMsg'=>$errMsg);
 
  }
 
