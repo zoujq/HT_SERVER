@@ -150,9 +150,7 @@
     
     if(check_token($conn,$htu_id,$ht_token)!=1)
     {
-      $errCode=-1;
-      $errMsg='auth failed!';
-      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+      return array('errCode'=>-1,'errMsg'=>'auth failed!');
     }
 
     $sql = "SELECT * FROM `device_info_tb` WHERE `htd_id` ='". $htd_id ."'";
@@ -167,15 +165,11 @@
       }
     }
     if($find_p_id==0){
-      $errCode=-2;
-      $errMsg='device htd_id error!';
-      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+      return array('errCode'=>-2,'errMsg'=>'device htd_id error!');
     }
     if($find_p_id != $p_id)
     {
-      $errCode=-3;
-      $errMsg='device htd_id not match p_id!';
-      return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+      return array('errCode'=>-3,'errMsg'=>'device htd_id not match p_id!');
     }
 
     $sql = "SELECT * FROM `product_tb` WHERE `p_id` = $p_id";
@@ -188,10 +182,7 @@
         return array('errCode'=>0,'errMsg'=>'','p_id'=>$row["p_id"],'p_name' =>$row["p_name"],'p_icon'=> $row["p_icon"]) ;             
       }
     }
-    
-    $errCode=-4;
-    $errMsg='p_id error! ';
-    return array('errCode'=>$errCode,'errMsg'=>$errMsg);
+    return array('errCode'=>-4,'errMsg'=>'p_id error! ');
 
  }
 
