@@ -167,8 +167,9 @@
     }
     if($find_htp_id != $htp_id)
     {
-      return array('errCode'=>-3,'errMsg'=>'device htd_id not match htp_id!');
+      // return array('errCode'=>-3,'errMsg'=>'device htd_id not match htp_id!');
     }
+    $htp_id=$find_htp_id;
 
     $sql = "SELECT * FROM `product_tb` WHERE `htp_id` = $htp_id";
     $result =$conn->query($sql);
