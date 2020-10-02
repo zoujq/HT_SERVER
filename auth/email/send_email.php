@@ -21,7 +21,7 @@
   $address = "904087449@qq.com";//收件人地址
   $mail->IsSMTP(); // 使用SMTP方式发送
   $mail->Host = "smtp.qiye.aliyun.com"; //使用163邮箱服务器
-  $mail->$SMTPSecure='ssl';
+  $mail->SMTPSecure='ssl';
   $mail->SMTPAuth = true; // 启用SMTP验证功能
   $mail->Username = "zoujq@huotiantech.com"; //你的163服务器邮箱账号
   $mail->Password = "Zz789789"; // 163邮箱密码
