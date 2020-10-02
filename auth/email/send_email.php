@@ -11,7 +11,8 @@
 	// mail($to,$subject,$message,$headers);
 	// echo "Mail Sent.";
 
-
+	ini_set("display_errors", "On");//打开错误提示
+	ini_set("error_reporting",E_ALL);//显示所有错误
   require_once './phpmailer/class.phpmailer.php';
 
 
