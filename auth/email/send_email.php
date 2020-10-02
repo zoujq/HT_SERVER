@@ -2,7 +2,6 @@
 
 // require_once './sql.php';
 
-<?php
 
 	$to = "904087449@qq.com";
 	$subject = "Test mail";
@@ -12,6 +11,6 @@
 	mail($to,$subject,$message,$headers);
 	echo "Mail Sent.";
 
-?>
+
 
 ?>
