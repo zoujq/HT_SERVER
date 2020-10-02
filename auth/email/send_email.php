@@ -23,10 +23,10 @@
   $mail->Host = "smtp.qiye.aliyun.com"; //使用163邮箱服务器
   $mail->SMTPSecure='ssl';
   $mail->SMTPAuth = true; // 启用SMTP验证功能
-  $mail->Username = "zoujq@huotiantech.com"; //你的163服务器邮箱账号
-  $mail->Password = "Zz789789"; // 163邮箱密码
+  $mail->Username = "service@huotiantech.com"; //你的163服务器邮箱账号
+  $mail->Password = "As45fnker566"; // 163邮箱密码
   $mail->Port = 465;//邮箱服务器端口号
-  $mail->SMTPDebug=true;
+  // $mail->SMTPDebug=true;
   $mail->From = "zoujq@huotiantech.com"; //邮件发送者email地址
   $mail->FromName = "测试邮件";//发件人名称
   $mail->AddAddress("$address", "张三"); //收件人地址，可以替换成任何想要接收邮件的email信箱,格式是AddAddress("收件人email","收件人姓名")
