@@ -68,7 +68,7 @@
                       <div style="margin-bottom:30px;">
                           <small style="display:block;margin-bottom:20px;font-size:12px;">
                               <p style="color:#747474;">
-                                  注意：此操作可能会绑定登录邮箱，如非本人操作，忽略此邮件！
+                                  注意：此操作可能会绑定登录邮箱，如非本人操作，请忽略此邮件！
                                   <br>（工作人员不会向你索取此验证码，请勿泄漏！)
                               </p>
                           </small>
@@ -76,11 +76,11 @@
                   </div>
                   <div style="width:700px;margin:0 auto;">
                       <div style="padding:10px 10px 0;border-top:1px solid #ccc;color:#747474;margin-bottom:20px;line-height:1.3em;font-size:12px;">
-                          <p>此为系统邮件，请勿回复！   
-
+                          <p>此为系统邮件，请勿回复！   <br/>
+                          <a href="http://www.huotiantech.com">火天官网</a>
                           </p>
                           <p>火天物联团队 </p>
-                          <p><a href="http://www.huotiantech.com">访问官网</a></p>
+                          
                       </div>
                   </div>
               </td>
