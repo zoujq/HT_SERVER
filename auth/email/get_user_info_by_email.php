@@ -14,7 +14,7 @@
   $errCode=var_code_fun($conn, $email,$code);
   if($errCode==0)
   {
-    echo json_encode(check($email));
+    echo json_encode(check($conn,$email));
   }
   else
   {
