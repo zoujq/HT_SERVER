@@ -34,6 +34,7 @@
     } 
 
     $sql = "SELECT * FROM `var_code_tb` WHERE `v_data` ='".$email."' ORDER BY `d_num` DESC LIMIT 1 ";
+    var_dump($sql);
 
     $result =$conn->query($sql);
 
