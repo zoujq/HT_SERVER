@@ -12,9 +12,8 @@
   $conn = new mysqli("localhost", "serveruser", "kskdfjdf", "serversql");
  
   creat_verification_code($conn, $to_addr,$code);
-  send_email($to_addr,$title,); 
 
-  echo json_encode(['errCode'=>0,'errMsg'=>'success']);
+  echo json_encode(send_email($to_addr,$title,$body));
 
 
 
@@ -78,7 +77,7 @@
                   <div style="width:700px;margin:0 auto;">
                       <div style="padding:10px 10px 0;border-top:1px solid #ccc;color:#747474;margin-bottom:20px;line-height:1.3em;font-size:12px;">
                           <p>此为系统邮件，请勿回复！   
-                          
+
                           </p>
                           <p>火天物联团队 </p>
                           <p><a href="http://www.huotiantech.com">访问官网</a></p>
