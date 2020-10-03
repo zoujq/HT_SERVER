@@ -38,6 +38,7 @@
           <style type="text/css">::-webkit-scrollbar{ display: none; }</style>
           <style id="cloudAttachStyle" type="text/css">#divNeteaseBigAttach, #divNeteaseBigAttach_bak{display:none;}</style>
           <style id="blockquoteStyle" type="text/css">blockquote{display:none;}</style>
+          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
           <style type="text/css">
               body{font-size:14px;font-family:arial,verdana,sans-serif;line-height:1.666;padding:0;margin:0;overflow:auto;white-space:normal;word-wrap:break-word;min-height:100px}
               td, input, button, select, body{font-family:Helvetica, "Microsoft Yahei", verdana}
