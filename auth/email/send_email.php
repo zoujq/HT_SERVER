@@ -26,11 +26,18 @@
   $mail->IsHTML(true);//是否使用HTML格式
   $mail->Subject = $title; //邮件标题
   $mail->Body = $body; //邮件内容，上面设置HTML，则可以是HTML
-  if (!$mail->Send()) {
-   	$errCode=-1;
- 	$errMsg= $mail->ErrorInfo;
+  try{
+  	 if (!$mail->Send()) {
+	   	$errCode=-1;
+	 	$errMsg= $mail->ErrorInfo;
+	  }
   }
-
+  catch(e)
+  {
+  	  $errCode=-2;
+  	  $errMsg=e;
+  }
+ 
   echo json_encode(['errCode'=>$errCode,'errMsg'=>$errMsg]);
 
 
