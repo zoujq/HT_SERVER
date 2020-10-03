@@ -1,6 +1,6 @@
 <?php
-  ini_set("display_errors", "On");//打开错误提示
-  ini_set("error_reporting",E_ALL);//显示所有错误
+  // ini_set("display_errors", "On");//打开错误提示
+  // ini_set("error_reporting",E_ALL);//显示所有错误
   require_once './send_email_fun.php';
 
   $to_addr=$_REQUEST["to"];

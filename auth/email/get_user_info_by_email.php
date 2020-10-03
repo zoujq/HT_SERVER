@@ -1,6 +1,6 @@
 <?php
-  ini_set("display_errors", "On");//打开错误提示
-  ini_set("error_reporting",E_ALL);//显示所有错误
+  // ini_set("display_errors", "On");//打开错误提示
+  // ini_set("error_reporting",E_ALL);//显示所有错误
   require_once './send_email_fun.php';
 
   $code=$_REQUEST["code"];
@@ -18,7 +18,7 @@
   }
   else
   {
-    echo json_encode(['errCode'=>$errCode,'errMsg'=>'fail']);
+    echo json_encode(['errCode'=>$errCode,'errMsg'=>'auth failed ,email or code wrong']);
   }
 
 
@@ -34,7 +34,6 @@
     } 
 
     $sql = "SELECT * FROM `var_code_tb` WHERE `v_data` ='".$email."' ORDER BY `num` DESC LIMIT 1 ";
-    var_dump($sql);
 
     $result =$conn->query($sql);
 
