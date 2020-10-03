@@ -1,24 +1,16 @@
 <?php
-
-// require_once './sql.php';
-
-
-	// $to = "904087449@qq.com";
-	// $subject = "Test mail";
-	// $message = "Hello! This is a simple email message.";
-	// $from = "zoujq@huotiantech.com";
-	// $headers = "From: $from";
-	// mail($to,$subject,$message,$headers);
-	// echo "Mail Sent.";
-
-	ini_set("display_errors", "On");//打开错误提示
-	ini_set("error_reporting",E_ALL);//显示所有错误
   require_once './phpmailer/class.phpmailer.php';
 
+  $to_addr=$_REQUEST["to"];
+  $title=$_REQUEST["title"];
+  $body=$_REQUEST["body"];
+
+  $errCode=0;
+  $errMsg='email send success';
 
   $mail = new PHPMailer(true); //建立邮件发送类
   $mail->CharSet = "UTF-8";//设置信息的编码类型
-  $address = "904087449@qq.com";//收件人地址
+  $address =  $to_addr;//收件人地址
   $mail->IsSMTP(); // 使用SMTP方式发送
   $mail->Host = "smtp.qiye.aliyun.com"; //使用163邮箱服务器
   $mail->SMTPSecure='ssl';
@@ -28,19 +20,18 @@
   $mail->Port = 465;//邮箱服务器端口号
   // $mail->SMTPDebug=true;
   $mail->From = "service@huotiantech.com"; //邮件发送者email地址
-  $mail->FromName = "测试邮件";//发件人名称
-  $mail->AddAddress("$address", "张三"); //收件人地址，可以替换成任何想要接收邮件的email信箱,格式是AddAddress("收件人email","收件人姓名")
+  $mail->FromName = "火天物联(HuotianIOT)";//发件人名称
+  $mail->AddAddress("$address", "火天物联(HuotianIOT)"); //收件人地址，可以替换成任何想要接收邮件的email信箱,格式是AddAddress("收件人email","收件人姓名")
   // $mail->AddAttachment("D:\abc.txt"); // 添加附件(注意：路径不能有中文)
   $mail->IsHTML(true);//是否使用HTML格式
-  $mail->Subject = "测试测试"; //邮件标题
-  $mail->Body = "新年快乐"; //邮件内容，上面设置HTML，则可以是HTML
+  $mail->Subject = $title; //邮件标题
+  $mail->Body = $body; //邮件内容，上面设置HTML，则可以是HTML
   if (!$mail->Send()) {
-   echo "邮件发送失败. <p>";
-   echo "错误原因: " . $mail->ErrorInfo;
-   exit;
+   	$errCode=-1;
+ 	$errMsg= $mail->ErrorInfo;
   }
 
-
+  echo json_encode(['errCode'=>$errCode,'errMsg'=>$errMsg]);
 
 
 ?>
