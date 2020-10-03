@@ -32,10 +32,10 @@
 	 	$errMsg= $mail->ErrorInfo;
 	  }
   }
-  catch(e)
+  catch(Exception $e)
   {
   	  $errCode=-2;
-  	  $errMsg=e;
+  	  $errMsg=$e;
   }
  
   echo json_encode(['errCode'=>$errCode,'errMsg'=>$errMsg]);
