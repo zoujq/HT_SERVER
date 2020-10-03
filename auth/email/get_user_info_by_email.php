@@ -33,7 +33,7 @@
         die("连接失败: " . $conn->connect_error);
     } 
 
-    $sql = "SELECT * FROM `var_code_tb` WHERE `v_data` ='".$to_addr."' ORDER BY `d_num` DESC LIMIT 1 ";
+    $sql = "SELECT * FROM `var_code_tb` WHERE `v_data` ='".$email."' ORDER BY `d_num` DESC LIMIT 1 ";
 
     $result =$conn->query($sql);
 
