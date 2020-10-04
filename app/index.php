@@ -6,9 +6,6 @@
 	<style type="text/css" media="screen">
 		.img{
 			display: flex;
-			height: 100vh;
-			width: 100vh;
-			flex-direction: row;
 			justify-content: center;
 			align-content: center;
 
@@ -21,8 +18,7 @@
 </head>
 <body>
 <div class="img">
-	<image src="./huotianiot.png" /> 
-	<p>扫描二维码下载火天物联APP</p>
+	<image src="./huotianiot.png" /> 	
 </div>
 </body>
 </html>
