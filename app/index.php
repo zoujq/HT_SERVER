@@ -1,20 +1,28 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,                          maximum-scale=1.0, user-scalable=no">
+	<style type="text/css" media="screen">
+		.img{
+			display: flex;
+			height: 100vh;
+			width: 100vh;
+			flex-direction: row;
+			justify-content: center;
+			align-content: center;
 
-// require_once './sql.php';
+		}
+		p{
+			margin-top: 50px;
 
-// echo "string2";
-
-// $p_arr=array();
-// $p_arr['nickName']='nickName';
-// $p_arr['avatarUrl']='01';
-// $p_arr['gender']=1;
-// $p_arr['language']='012';
-// $p_arr['city']='013';
-// $p_arr['province']='014';
-// $p_arr['country']='015';
-// $p_arr['openId']='021';
-// $p_arr['unionId']='021';
-
-// var_dump(regist_user($p_arr)) ;
-
-?>
+		}
+	</style>
+</head>
+<body>
+<div class="img">
+	<image src="./huotianiot.png" /> 
+	<p>扫描二维码下载火天物联APP</p>
+</div>
+</body>
+</html>
