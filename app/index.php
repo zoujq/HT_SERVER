@@ -18,7 +18,7 @@
 
 		}
 		img{
-			width: 80%;
+			width: 200px;
 		}
 	</style>
 </head>
