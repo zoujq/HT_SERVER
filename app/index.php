@@ -6,6 +6,7 @@
 	<style type="text/css" media="screen">
 		.img{
 			display: flex;
+			flex-direction: row;
 			justify-content: center;
 			align-content: center;
 			height: 100%;
