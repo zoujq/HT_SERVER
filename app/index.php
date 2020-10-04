@@ -17,14 +17,14 @@
 			width: 100%;
 
 		}
-		image{
+		img{
 			width: 80%;
 		}
 	</style>
 </head>
 <body>
 <div class="img">
-	<image src="./huotianiot.png" /> 	
+	<img src="./huotianiot.png" /> 	
 </div>
 </body>
 </html>
