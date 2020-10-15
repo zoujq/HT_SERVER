@@ -239,9 +239,9 @@
 			{		
 				if(get_os()=='android')
 				{
-					window.hilink.registerBleDevice(json_obj.advertisData.substring(22,34),
+					window.hilink.registerBleDevice(json_obj.advertisData.substring(18,30),
 					'V1.0.1', 'V1.0.1', 'window.regist_cb');
-					console.log('android registerBleDevice:'+json_obj.advertisData.substring(22,34));
+					console.log('android registerBleDevice:'+json_obj.advertisData.substring(18,30));
 				}
 				else
 				{
