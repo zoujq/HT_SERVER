@@ -131,7 +131,8 @@
 			width: 91.11vw;
 			text-align: left;
 			font-size: 4.44vw;
-			margin-top: 1.11vw;
+			/* margin-top: 1.11vw; */
+			line-height: 5.78vw;
 			margin-left: 6.67vw;
 		}
 		
@@ -285,7 +286,7 @@
 		          return language;
 		        })();
 		        
-		        if(this.currentLanguage !== 'zh-CN') {
+		        if(this.currentLanguage != 'zh-CN') {
 		        	this.document.getElementsByClassName("bang-ding-ing")[0].innerHTML = 'Connecting…'
 		        	this.document.getElementsByClassName("lian-jie-shi-bai")[0].innerHTML = 'Unable to connect'
 		        	this.document.getElementsByClassName("tip-title")[0].innerHTML = 'While connecting, make sure:'
