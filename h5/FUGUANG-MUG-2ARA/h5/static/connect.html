@@ -169,9 +169,9 @@
 		}
 		
 	</style>
-	<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+	<!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script> -->
 	<script>
-		eruda.init()
+		// eruda.init()
 	</script>
 </head>	
 <body>
@@ -220,8 +220,12 @@
 			bang_ding_state=0;
 			start_counter();
 			console.log('get_adapter');
-			// window.hilink.getBluetoothAdapterState('window.get_adapter_cb');
-			window.hilink.getCurrentUnregisteredDevice('window.get_dev_cb');
+			try{
+				window.hilink.getCurrentUnregisteredDevice('window.get_dev_cb');
+			}catch(e){
+				//TODO handle the exception
+			}
+			
 		}
 		window.get_adapter_cb = (res)=>{
 			if(JSON.parse(res).available==true)
@@ -300,9 +304,9 @@
 			else if(navigator.language=='zh-TW' || 	navigator.language=='zh-HK' || 
 				navigator.language=='zh-MO')
 			{
-				this.document.getElementsByClassName("bang-ding-ing")[0].innerHTML = '設備綁定中…'
+				this.document.getElementsByClassName("bang-ding-ing")[0].innerHTML = '設備綁定中...'
 				this.document.getElementsByClassName("lian-jie-shi-bai")[0].innerHTML = '連接失敗'
-				this.document.getElementsByClassName("tip-title")[0].innerHTML = '連線過程中,請確保::'
+				this.document.getElementsByClassName("tip-title")[0].innerHTML = '連線過程中,請確保:'
 				this.document.getElementsByClassName("tip-content")[0].innerHTML = '1.手機藍牙是否打開'
 				this.document.getElementsByClassName("tip-content")[1].innerHTML = '2.設備與手機的距離小於5米'
 				this.document.getElementsByClassName("tip-content")[2].innerHTML = '3.手機網路暢通'
@@ -357,6 +361,9 @@
 				this.document.getElementsByClassName("lian-jie-shi-bai")[0].style.color = "rgba(255,255,255,1)";
 				this.document.getElementsByClassName("tip-title")[0].style.color = "rgba(255,255,255,1)";
 				this.document.getElementsByClassName("tip-content")[0].style.color = "rgba(255,255,255,1)";
+				this.document.getElementsByClassName("tip-content")[1].style.color = "rgba(255,255,255,1)";
+				this.document.getElementsByClassName("tip-content")[2].style.color = "rgba(255,255,255,1)";
+				this.document.getElementsByClassName("tip-content")[3].style.color = "rgba(255,255,255,1)";
 				this.document.getElementsByClassName("footer")[0].style.background = "rgba(255,255,255,0.10)";
 				
 			}
